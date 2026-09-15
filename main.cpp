@@ -78,8 +78,10 @@ int main( int argc, char * argv[] )
 
 				loan_amount+=instantaneous_intrest;
 				cout<<month<<"\t$"<<0.00<<"\t$"<<loan_amount<<"\t"<<yearly_interest_rate/(12.0)<<"\t$"<<instantaneous_intrest<<"\t$"<<loan_amount-instantaneous_intrest<<endl;
+				intrest_sum+=instantaneous_intrest;
 				loan_amount-=monthly_payment;
 				loan_amount = (loan_amount<0)?0:loan_amount;
+				
 			}
 
 		}
@@ -87,7 +89,7 @@ int main( int argc, char * argv[] )
 	}
 	cout<<"******************************************************\n"<<endl;
 	cout<<"It takes "<<month<<" to pay off the loan."<<endl;
-	cout<<"Total intrest paid is: $"<<intrest_sum;
+	cout<<"Total intrest paid is: $"<<intrest_sum<<endl;
 
 
 
