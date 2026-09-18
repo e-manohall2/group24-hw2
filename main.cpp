@@ -48,12 +48,8 @@ int main( int argc, char * argv[] )
 	loan_amount = arguments[0];
 	yearly_interest_rate = arguments[1];
 	monthly_payment = arguments[2];
-	if(monthly_payment<(yearly_interest_rate/1200*loan_amount)){ //if intrest is greater than payment 
-		cout << "(Insufficient payment): " << arguments[0] << ", " << arguments[1] << ", " << arguments[2] << endl;
-		return -1;
-
-	}
-	else if (yearly_interest_rate<0)
+	
+	if (yearly_interest_rate<0)
 	{
 		cout<<"(Invalid Intrest Rate): "<< arguments[0] << ", " << arguments[1] << ", " << arguments[2] << endl;
 		return -1;
@@ -65,7 +61,15 @@ int main( int argc, char * argv[] )
 		return -1;
 
 	}
-	
+	else if(loan_amount<0){
+		cout<<"(Invalid Loan Amount): "<< arguments[0] << ", " << arguments[1] << ", " << arguments[2] << endl;
+		return -1;
+	}
+	else if(monthly_payment<=(yearly_interest_rate/1200*loan_amount)){ //if intrest is greater than payment 
+		cout << "(Insufficient payment): " << arguments[0] << ", " << arguments[1] << ", " << arguments[2] << endl;
+		return -1;
+
+	}
 
 
 	double instantaneous_intrest;
@@ -78,6 +82,8 @@ int main( int argc, char * argv[] )
 	while(loan_amount>0.00){
 		if(month==0){
 			cout<<month<<"\t"<<loan_amount<<"\tN/A\tN/A\tN/A\tN/A"<<endl;
+				month++;
+
 		}
 		else{
 			instantaneous_intrest = loan_amount * yearly_interest_rate /1200;
@@ -86,9 +92,10 @@ int main( int argc, char * argv[] )
 				loan_amount-=monthly_payment;
 				intrest_sum += instantaneous_intrest;
 				cout<<month<<"\t$"<<loan_amount<<"\t$"<<monthly_payment<<"\t"<<yearly_interest_rate/(12.0)<<"\t$"<<instantaneous_intrest<<"\t$"<<monthly_payment-instantaneous_intrest<<endl;
+				month++;
+
 			}
 			else{
-
 				loan_amount+=instantaneous_intrest;
 				cout<<month<<"\t$"<<0.00<<"\t$"<<loan_amount<<"\t"<<yearly_interest_rate/(12.0)<<"\t$"<<instantaneous_intrest<<"\t$"<<loan_amount-instantaneous_intrest<<endl;
 				intrest_sum+=instantaneous_intrest;
@@ -98,10 +105,9 @@ int main( int argc, char * argv[] )
 			}
 
 		}
-		month++;
 	}
 	cout<<"******************************************************\n"<<endl;
-	cout<<"It takes "<<month<<" to pay off the loan."<<endl;
+	cout<<"It takes "<<month<<" month(s) to pay off the loan."<<endl;
 	cout<<"Total intrest paid is: $"<<intrest_sum<<endl;
 
 
