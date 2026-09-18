@@ -9,7 +9,7 @@ int main( int argc, char * argv[] )
 	if (argc > 4) 
 	{
 		cout << "Too many arguments. Cannot pass in more than three." << endl;
-		return -1;
+		return 0;
 	}
 
 	int i = 1;
@@ -34,7 +34,7 @@ int main( int argc, char * argv[] )
 					cout << "(Invalid interest rate): " << argv[i-1] << " " << argv[i] << endl;
 				else
 					cout << "(Invalid payment): " << argv[i-2] << " " << argv[i-1] << " " << argv[i] << endl;
-				return -2;
+				return 0;
 			}
 			i++;
 		}
@@ -52,22 +52,22 @@ int main( int argc, char * argv[] )
 	if (yearly_interest_rate<0)
 	{
 		cout<<"(Invalid Intrest Rate): "<< arguments[0] << ", " << arguments[1] << ", " << arguments[2] << endl;
-		return -1;
+		return 0;
 
 	}
 	else if (monthly_payment<0)
 	{
 		cout<<"(Invalid Monthly Payment): "<< arguments[0] << ", " << arguments[1] << ", " << arguments[2] << endl;
-		return -1;
+		return 0;
 
 	}
 	else if(loan_amount<0){
 		cout<<"(Invalid Loan Amount): "<< arguments[0] << ", " << arguments[1] << ", " << arguments[2] << endl;
-		return -1;
+		return 0;
 	}
 	else if(monthly_payment<=(yearly_interest_rate/1200*loan_amount)){ //if intrest is greater than payment 
 		cout << "(Insufficient payment): " << arguments[0] << ", " << arguments[1] << ", " << arguments[2] << endl;
-		return -1;
+		return 0;
 
 	}
 
