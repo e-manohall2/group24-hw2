@@ -49,7 +49,7 @@ int main( int argc, char * argv[] )
 	yearly_interest_rate = arguments[1];
 	monthly_payment = arguments[2];
 	if(monthly_payment<(yearly_interest_rate/1200*loan_amount)){ //if intrest is greater than payment 
-		cout << "(Insufficient payment): " << argv[0] << " " << argv[1] << " " << argv[2] << endl;
+		cout << "(Insufficient payment): " << arguments[0] << ", " << arguments[1] << ", " << arguments[2] << endl;
 		return -1;
 
 	}
