@@ -53,6 +53,19 @@ int main( int argc, char * argv[] )
 		return -1;
 
 	}
+	else if (yearly_interest_rate<0)
+	{
+		cout<<"(Invalid Intrest Rate): "<< arguments[0] << ", " << arguments[1] << ", " << arguments[2] << endl;
+		return -1;
+
+	}
+	else if (monthly_payment<0)
+	{
+		cout<<"(Invalid Monthly Payment): "<< arguments[0] << ", " << arguments[1] << ", " << arguments[2] << endl;
+		return -1;
+
+	}
+	
 
 
 	double instantaneous_intrest;
